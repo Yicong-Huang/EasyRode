@@ -1,5 +1,16 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+    h1= title
+    p Welcome to #{title}
+    form(action='search')
+        | Departure:
+        br
+        input(type='text', name='Departure', value='Irvine')
+        br
+        | Destination:
+        br
+        input(type='text', name='Destination', value='Berkeley')
+        br
+        br
+        input(type='submit', value='Submit')
