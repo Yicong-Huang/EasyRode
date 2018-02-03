@@ -13,4 +13,26 @@ block content
         input(type='text', name='Destination', value='Berkeley')
         br
         br
-        input(type='submit', value='Submit')
+        input(type='submit', value='Submit', id='search')
+
+    .package_card(hidden=!showResult)
+        .node
+            p #{result.distance}
+            p Departure
+            p
+            p   *
+        .node
+            p Train
+            p
+            p   *
+        .node
+            p Plane
+            p
+            p   *
+        .node
+            p Destination
+footer
+    script(type='text/javascript').
+        $("#search").on("click", function (event) {
+            $("package_card").show();
+        });

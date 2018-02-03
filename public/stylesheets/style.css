@@ -6,3 +6,9 @@ body {
 a {
   color: #00B7FF;
 }
+
+.package_card {
+
+    font: 50px "Lucida Grande", Helvetica, Arial, sans-serif;
+
+}

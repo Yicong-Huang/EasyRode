@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/EasyRode.iml" filepath="$PROJECT_DIR$/EasyRode.iml" />
+      <module fileurl="file://$PROJECT_DIR$/python_utilities/python_utilities.iml" filepath="$PROJECT_DIR$/python_utilities/python_utilities.iml" />
     </modules>
   </component>
 </project>
