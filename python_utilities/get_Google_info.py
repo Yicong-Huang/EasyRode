@@ -2,12 +2,12 @@
 
 import json
 import sys
-import googlemaps
 from datetime import datetime
 
+import googlemaps
 
 # Read data from stdin
-from Trans_Mode import Walk
+from Trans_Mode import Walk, Drive
 
 
 def read_in():
@@ -17,41 +17,31 @@ def read_in():
 
 
 def main():
-
-
-    # print(lines)
-
-    # create a numpy array
-
-    # return the sum to the output stream
-
-
     gmaps = googlemaps.Client(key='AIzaSyB-Tl6HY9naSBAfJc0KjAg-0yXIlxrTqOA')
-
-
-    # # Look up an address with reverse geocoding
-    # reverse_geocode_result = gmaps.reverse_geocode((40.714224, -73.961452))
-    #
-
-    # Request directions via public transit
 
     now = datetime.now()
     directions_result = gmaps.directions(sys.argv[1], sys.argv[2],
-
                                          mode="transit",
-                                         departure_time=now)
+                                         departure_time=now,
+                                         language='en-GB')
+    result = ""
+    # for step in directions_result[0]['legs'][0]['steps']:
+    #
+    #     if step['travel_mode'] == 'WALKING':
+    #         result += Walk(step)
 
-    for step in directions_result[0]['legs'][0]['steps']:
 
-        # print(step['travel_mode'])
-        if step['travel_mode'] == 'WALKING':
-            print(Walk(step))
+    directions_result = gmaps.directions(sys.argv[1], sys.argv[2],
+                                         mode="driving",
+                                         departure_time=now,
+                                         language='en-GB')
+    # print(directions_result[0]['legs'][0])
+    result += str(Drive(directions_result[0]['legs'][0]))
 
-
-        # if 'transit_details' in step:
-        #     for detail in step['transit_details']:
-        #         print(detail)
-
+    # if 'transit_details' in step:
+    #     for detail in step['transit_details']:
+    #         print(detail)
+    print(result,end = "")
 
 # start process
 if __name__ == '__main__':

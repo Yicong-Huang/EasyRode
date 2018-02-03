@@ -17,8 +17,8 @@ block content
 
     .package_card(hidden=!showResult)
         .node
-            //p #{result}
-            p #{result.distance}
+            p #{JSON.parse(result)}
+            p #{JSON.parse(result)['distance']}
 
             p Departure
             p
@@ -34,7 +34,7 @@ block content
         .node
             p Destination
 footer
-    var result = !{JSON.parse(result)}
+
     script(type='text/javascript').
         $("#search").on("click", function (event) {
             $("package_card").show();
